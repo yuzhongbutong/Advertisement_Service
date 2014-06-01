@@ -1,0 +1,56 @@
+@CHARSET "UTF-8";
+
+div.outter_div_style {
+	width: 800;
+}
+
+div.header_div_style {
+	width: 100%;
+	text-align: right;
+}
+
+div.footer_div_style {
+	width: 100%;
+	text-align: justify;
+	margin: 10;
+}
+
+fieldset.fieldset_style {
+	width: 100%;
+	height: 450;
+	overflow: auto;
+}
+
+tr.display_tr_style {
+	background: lightgrey;
+	font-weight: bold;
+}
+
+.update_text_none_style {
+	width: 100%;
+	background: none;
+	border: none;
+}
+
+.id_text_none_style {
+	width: 100%;
+	background: none;
+	border: none;
+	text-align: center;
+}
+
+.update_text_style {
+	width: 100%;
+	border-color: pink;
+}
+
+.insert_text_style {
+	width: 100%;
+	border-color: lightgreen;
+}
+
+img.img_style {
+	width: 30;
+	height: 30;
+	cursor: hand;
+}

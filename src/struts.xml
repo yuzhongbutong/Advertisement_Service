@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+      "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+      "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="service" namespace="/service" extends="struts-default">
+		<interceptors>
+			<interceptor name="serviceInterceptor" class="beanServiceInterceptor" />
+			<interceptor-stack name="entryServiceInterceptor">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="serviceInterceptor" />
+			</interceptor-stack>
+		</interceptors>
+
+		<global-results>
+			<result name="login">/pages/ManagerLogin.jsp</result>
+		</global-results>
+
+		<action name="manager" class="beanManagerAction">
+			<result name="success">/pages/DisplayList.vm</result>
+			<result name="error">/pages/ManagerLogin.jsp</result>
+		</action>
+
+		<action name="displayList" class="beanDisplayListAction">
+			<result name="success-register">/pages/ManagerRegister.vm</result>
+		</action>
+
+		<action name="managerRegister" class="beanManagerRegisterAction">
+			<result name="success">/pages/ManagerRegister.vm</result>
+		</action>
+	</package>
+	<package name="device" namespace="/device" extends="json-default">
+		<interceptors>
+			<interceptor name="deviceInterceptor" class="beanDeviceInterceptor" />
+			<interceptor-stack name="entryDeviceInterceptor">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="deviceInterceptor" />
+			</interceptor-stack>
+		</interceptors>
+
+		<action name="register" class="beanRegisterAction">
+			<result name="input" type="json">
+				<param name="root">statusMap</param>
+			</result>
+			<interceptor-ref name="entryDeviceInterceptor" />
+		</action>
+
+		<action name="login" class="beanLoginAction">
+			<result name="input" type="json">
+				<param name="root">statusMap</param>
+			</result>
+			<interceptor-ref name="entryDeviceInterceptor" />
+		</action>
+	</package>
+</struts>

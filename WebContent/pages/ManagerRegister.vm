@@ -1,0 +1,61 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>广告后台管理系统</title>
+<link rel="stylesheet" type="text/css" href="/Advertisement_Service/CSS/normal.css"/>
+<script type="text/javascript" src="/Advertisement_Service/JS/common/single.js"></script>
+<script type="text/javascript">
+function doSubmit(str){
+	document.managerRegisterForm.action = "/Advertisement_Service/service/managerRegister!" + str + ".action";
+	document.managerRegisterForm.submit();
+}
+</script>
+</head>
+<body style="text-align:center">
+	<form name="managerRegisterForm" method="post">
+	<br/>
+    <h1>用户注册管理</h1>
+	<br/>
+	<div class="outter_div_style">
+	<div class="header_div_style">
+    	<input type="button" value="保存" onclick="doSubmit('saveRegister')"/>
+    	<input type="button" value="删除" onclick="doSubmit('deleteRegister')"/>
+    </div>
+	<fieldset class="fieldset_style">
+		<legend>查询信息</legend>
+    	<table id="tableID" align="center" border="1" width="100%">
+        	<tr class="display_tr_style" align="center">
+				<td><input type="checkbox" onclick="doCheckAll(this)"/></td>
+        		<td>ID</td>
+        		<td>用户名</td>
+        		<td>密码</td>
+        		<td>真实姓名</td>
+        		<td>电话号码</td>
+        		<td>邮政编码</td>
+        		<td>所在地区</td>
+        		<td>街道地址</td>
+        		<td>积分</td>
+            </tr>
+			#foreach($element in $list)
+			<tr align="center">
+				<td><input type="checkbox" onclick="doCheck(this)"/><input name="checkBox" type="hidden" vlaue="0"/></td>
+        		<td><input name="id" type="text" value="$element.id" class="id_text_none_style" readonly /></td>
+        		<td><input name="username" type="text" value="$element.username" class="update_text_none_style" readonly /></td>
+        		<td><input name="password" type="text" value="$element.password" class="update_text_none_style" readonly /></td>
+        		<td><input name="realname" type="text" value="$element.realname" class="update_text_none_style" readonly /></td>
+        		<td><input name="telephone" type="text" value="$element.telephone" class="update_text_none_style" readonly /></td>
+        		<td><input name="post" type="text" value="$element.post" class="update_text_none_style" readonly /></td>
+        		<td><input name="area" type="text" value="$element.area" class="update_text_none_style" readonly /></td>
+        		<td><input name="street" type="text" value="$element.street" class="update_text_none_style" readonly /></td>
+        		<td><input name="score" type="text" value="$element.score" class="update_text_none_style" readonly /></td>
+            </tr>
+			#end
+        </table>
+		<div class="footer_div_style">
+			<img src="/Advertisement_Service/images/plus.jpg" style="float:left" class="img_style" onclick="doRows('tableID', true, 'checkBox[~!@]id[~!@]username[~!@]password[~!@]realname[~!@]telephone[~!@]post[~!@]area[~!@]street[~!@]score')"/>
+			<img src="/Advertisement_Service/images/minus.jpg" style="float:right" class="img_style" onclick="doRows('tableID', false)"/>
+        </div>
+    </fieldset>
+    </div>
+    </form>
+</body>
+</html>
